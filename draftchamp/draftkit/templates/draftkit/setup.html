@@ -3,13 +3,23 @@
 <link rel="stylesheet" type="text/css" href="/static/css/setup.css">
 
 <div class="number-of-teams">
+	<h2>League settings</h2>
 	<form name="number-of-teams">
 		{{ number_teams_form }}
 		<button type="submit">Submit</button>
 	</form>
 </div>
 
+<div class="roster-setup hidden">
+	<h2>Roster</h2>
+	<form name="roster-setup">
+		{{ roster_setup_form }}
+		<button type="submit">Submit</button>
+	</form>
+</div>
+
 <div class="create-team hidden">
+	<h2>Create teams</h2>
 	<form id="create-team-form" name="create-team">
 		{{ create_team_form }}
 		<button type="submit">Add Team</button>
@@ -17,6 +27,6 @@
 </div>
 
 <div class="teams-to-add hidden">
-	Teams:
+	<h2>Teams:</h2>
 	<div class="teams-list"></div>
 </div>

@@ -4,7 +4,6 @@ class Owner(models.Model):
 	first_name = models.CharField(max_length=20)
 	last_name = models.CharField(max_length=20)
 	email = models.CharField(max_length=30)
-	draft_order = models.IntegerField()
 
 	def __str__(self):
 		return self.first_name + ' ' + self.last_name
@@ -12,17 +11,10 @@ class Owner(models.Model):
 class Team(models.Model):
 	name = models.CharField(max_length=30)
 	owner = models.ForeignKey(Owner)
+	draft_order = models.IntegerField()
 
 	def __str__(self):
 		return self.name
-
-class NFLTeam(models.Model):
-	city = models.CharField(max_length=20)
-	nickname = models.CharField(max_length=20)
-	abbrev = models.CharField(max_length=3, default='XXX')
-
-	def __str__(self):
-		return self.abbrev
 
 class Player(models.Model):
 	POSITIONS = (
@@ -30,7 +22,7 @@ class Player(models.Model):
 		('RB', 'Running back'),
 		('WR', 'Wide receiver'),
 		('TE', 'Tight end'),
-		('DST', 'Defense'),
+		('DEF', 'Defense'),
 		('K', 'Kicker')
 	)
 
@@ -40,16 +32,17 @@ class Player(models.Model):
 	position_rank = models.IntegerField()
 	overall_rank = models.IntegerField()
 	available = models.BooleanField('Available', default=True)
-	nfl_team = models.ForeignKey(NFLTeam)
+	nfl_team = models.CharField(max_length=3)
 
 	def __str__(self):
-		return self.first_name + ' ' + self.last_name + ', ' + self.position
+		return self.first_name + ' ' + self.last_name + ', ' + self.position + ' (' + self.nfl_team + ')'
 
 class DraftPick(models.Model):
-	draft_round = models.IntegerField()
-	pick_number = models.IntegerField()
-	fantasy_team = models.ForeignKey(Team)
-	player = models.ForeignKey(Player)
+	draft_round = models.IntegerField(blank=True, null=True)
+	pick_number = models.IntegerField(blank=True, null=True)
+	overall_pick_number = models.IntegerField()
+	fantasy_team = models.ForeignKey(Team, blank=True, null=True)
+	player = models.ForeignKey(Player, blank=True, null=True)
 
 	def __str__(self):
 		return 'Round ' + str(self.draft_round) + ", Pick " + str(self.pick_number)

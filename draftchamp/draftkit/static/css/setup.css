@@ -1,3 +1,13 @@
 .hidden {
 	display: none;
 }
+
+.player-position {
+	color: blue;
+	cursor: pointer;
+}
+
+.unclickable {
+	color: red;
+	pointer-events: none;
+}

@@ -1,0 +1,77 @@
+.recent-picks {
+	display: table;
+	margin: 0 auto;
+}
+
+.last-pick,
+.on-the-clock-pick,
+.next-pick,
+.player-position {
+	display: table-cell;
+}
+
+.last-pick {
+	padding-right: 100px;
+}
+
+.on-the-clock-pick {
+	padding-right: 100px;
+}
+
+.see-position {
+	display: table;
+	margin: 40px auto 0;
+}
+
+.player-position {
+	padding-right: 50px;
+}
+
+.player-position.k-list {
+	padding-right: 0;
+}
+
+.draft-board {
+	display: table;
+	margin: 0 auto;
+}
+
+.draft-board button {
+	display: table;
+	font-size: 13px;
+	margin: 10px auto;
+}
+
+.big-board {
+	height: 200px;
+	font-size: 16px;
+	width: 470px;
+}
+
+.show-roster {
+	left: 70px;
+	position: absolute;
+	top: 80px;
+}
+
+.team-select-dropdown {
+	margin-bottom: 20px;
+}
+
+/***********************
+**** HELPER CLASSES ****
+***********************/
+
+.hidden {
+	display: none;
+}
+
+.player-position {
+	color: rgb(185, 185, 185);
+	cursor: pointer;
+}
+
+.unclickable {
+	color: rgb(0, 0, 0);
+	pointer-events: none;
+}
